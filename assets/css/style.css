@@ -38,27 +38,31 @@ body {
   padding: 5%;
   padding-top: 0;
 }
-#choiceOne {
+#choiceOne,
+#choiceTwo,
+#choiceThree,
+#choiceFour {
   background-color: black;
+  border: 2px solid;
+  padding: 2.5%;
+}
+#choiceOne {
   color: red;
-  border: 2px solid red;
+  border-color: red;
   margin-right: 1%;
   margin-bottom: 1%;
 }
 #choiceTwo {
-  background-color: black;
   color: blue;
-  border: 2px solid blue;
+  border-color: blue;
   margin-bottom: 1%;
 }
 #choiceThree {
-  background-color: black;
   color: green;
-  border: 2px solid green;
+  border-color: green;
   margin-right: 1%;
 }
 #choiceFour {
-  background-color: black;
   color: yellow;
-  border: 2px solid yellow;
+  border-color: yellow;
 }
