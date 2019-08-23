@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- sources -->
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <title>Trivia Challenge</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col text-center text-uppercase" id="title">
+          Timed Trivia Challenge
+        </div>
+      </div>
+      <div class="row">
+        <div class="col" id="timeRemaining">
+          Time Remaining:&nbsp;&nbsp;<span id="secLeft">XX</span>
+        </div>
+        <div class="col" id="correctTally"></div>
+      </div>
+
+      <div class="row" id="questionText">
+        You will have to answer 5 questions in 30 seconds! The questions will
+        appar here once you click any answer below.
+      </div>
+      <div class="row text-center" id="choices">
+        <div class="col" id="choiceOne">A.</div>
+        <div class="col" id="choiceTwo">B.</div>
+        <div class="w-100"></div>
+        <div class="col" id="choiceThree">C.</div>
+        <div class="col" id="choiceFour">D.</div>
+      </div>
+
+      <!-- <div class="row" id="choiceOne">You'll</div>
+      <div class="row" id="choiceTwo">Have</div>
+      <div class="row" id="choiceThree">Four</div>
+      <div class="row" id="choiceFour">Choices</div> -->
+    </div>
+  </body>
+</html>

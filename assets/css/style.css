@@ -1,0 +1,64 @@
+body {
+  background: url("../../assets/images/papyrus-dark.png");
+  background-color: #191919;
+  font-family: Georgia, "Times New Roman", Times, sans-serif;
+}
+.container {
+  color: black;
+}
+#title,
+#timeRemaining,
+#correctTally,
+#secLeft,
+#questionText,
+#choices {
+  background-color: aquamarine;
+  margin-bottom: 2.5%;
+}
+#title {
+  margin-top: 2.5%;
+  font-size: 3em;
+}
+#timeRemaining,
+#correctTally {
+  font-size: 1em;
+
+  padding: 2.5% 0 2.5% 2.5%;
+}
+#secLeft {
+  font-size: 1.5em;
+}
+#questionText {
+  font-size: 2em;
+  padding: 5%;
+  margin-bottom: 0;
+}
+#choices {
+  font-size: 1.5em;
+  padding: 5%;
+  padding-top: 0;
+}
+#choiceOne {
+  background-color: black;
+  color: red;
+  border: 2px solid red;
+  margin-right: 1%;
+  margin-bottom: 1%;
+}
+#choiceTwo {
+  background-color: black;
+  color: blue;
+  border: 2px solid blue;
+  margin-bottom: 1%;
+}
+#choiceThree {
+  background-color: black;
+  color: green;
+  border: 2px solid green;
+  margin-right: 1%;
+}
+#choiceFour {
+  background-color: black;
+  color: yellow;
+  border: 2px solid yellow;
+}
