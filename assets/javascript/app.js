@@ -56,19 +56,6 @@ function startGame() {
   orderRandom(questionOrder);
 }
 
-function playGame(xx) {
-  orderRandom(pickOrder);
-  answer = `win`;
-  //Print timer to page every second
-  runTimer();
-  //Print question and possible answers to page
-  qText.text(question[xx]);
-  displayChoices(xx);
-  //Determine if chosen answer was correct answer on click
-  // checkWin(xx);
-  console.log(`The answer is in place: ${answer}`);
-}
-
 function runTimer() {
   clearInterval(countdown);
   countdown = setInterval(decrement, 1000);
@@ -86,12 +73,34 @@ function decrement() {
 
 function stop() {
   clearInterval(countdown);
+  if (timeLeft < 10) {
+    timeLeft = 10;
+    $(`#secLeft`).text(timeLeft - 2);
+  }
 }
 
 function timeUp() {
   qText.text(
     `Whoops! You ran out of time for that one! Click to move on to the next.`
   );
+  if (pickA.hasClass("win") === true) {
+    pickB.text(`- -- --- -- -`);
+    pickC.text(`- -- --- -- -`);
+    pickD.text(`- -- --- -- -`);
+  } else if (pickB.hasClass("win") === true) {
+    pickA.text(`- -- --- -- -`);
+    pickC.text(`- -- --- -- -`);
+    pickD.text(`- -- --- -- -`);
+  } else if (pickC.hasClass("win") === true) {
+    pickB.text(`- -- --- -- -`);
+    pickA.text(`- -- --- -- -`);
+    pickD.text(`- -- --- -- -`);
+  } else if (pickD.hasClass("win") === true) {
+    pickB.text(`- -- --- -- -`);
+    pickC.text(`- -- --- -- -`);
+    pickA.text(`- -- --- -- -`);
+  }
+  removeWinClass();
   timeLeft = 10;
 }
 
@@ -116,18 +125,22 @@ function choices(y) {
   if (pickOrder[0] === 0) {
     pickA.addClass("win");
   }
+
   pickB.text(y[pickOrder[1]]);
   if (pickOrder[1] === 0) {
     pickB.addClass("win");
   }
+
   pickC.text(y[pickOrder[2]]);
   if (pickOrder[2] === 0) {
     pickC.addClass("win");
   }
+
   pickD.text(y[pickOrder[3]]);
   if (pickOrder[3] === 0) {
     pickD.addClass("win");
   }
+  console.log(`added win class`);
 }
 
 function removeWinClass() {
@@ -135,61 +148,55 @@ function removeWinClass() {
   pickB.removeClass("win");
   pickC.removeClass("win");
   pickD.removeClass("win");
+  console.log(`removed win class`);
 }
 
 function checkWin(xx) {
-  if ($(xx).hasClass(`win`) == true) {
-    win();
+  if (xx.hasClass(`win`) == true) {
+    score++;
     console.log(`yes`);
   } else {
-    lose();
     console.log(`no`);
   }
-}
-
-function win() {
-  score++;
-  $(`questionText`).text(`Good Job! You got that one right!`);
-  placeVal++;
+  stop();
   removeWinClass();
+
+  placeVal++;
 }
 
-function lose() {
-  $(`questionText`).text(`Good Job! You got that one right!`);
-  $(`#choices`).click(function() {
-    placeVal++;
-    removeWinClass();
-  });
+function endgame() {
+  stop();
+  qText.text(`Game Over! You got ${score} questions correct!`);
+  pickA.text(`# Correct`);
+  pickB.text(`# Incorrect`);
+  pickC.text(score);
+  pickD.text(5 - score);
 }
-checkWin(pickA);
-// for (let xx = 0; xx < questionOrder.length; xx++) {
-//   const questNum = questionOrder[xx];
-//   playGame(questNum);
-//   console.log(questNum);
-//   $(`.container`).holdReady(true);
-//   $(`.container`).click(function() {
-//     holdReady(false);
-//   });
-// }
 
 startGame();
-var placeVal = 0;
-orderRandom(pickOrder);
+var placeVal = -1;
 $(`#choices`).click(function() {
   runTimer();
-  qText.text(question[placeVal]);
+  qText.text(question[questionOrder[placeVal + 1]]);
   orderRandom(pickOrder);
   displayChoices(placeVal);
-  $(`#choiceA`).click(function() {
-    checkWin(pickA);
-  });
-  $(`#choiceB`).click(function() {
-    checkWin(pickB);
-  });
-  $(`#choiceC`).click(function() {
-    checkWin(pickC);
-  });
-  $(`#choiceD`).click(function() {
-    checkWin(pickD);
-  });
+  if (placeVal > 4) {
+    endgame();
+  }
+});
+pickA.click(function() {
+  checkWin(pickA);
+  stop();
+});
+pickB.click(function() {
+  checkWin(pickB);
+  stop();
+});
+pickC.click(function() {
+  checkWin(pickC);
+  stop();
+});
+pickD.click(function() {
+  checkWin(pickD);
+  stop();
 });
