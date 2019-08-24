@@ -52,6 +52,13 @@ body {
   margin-right: 1%;
   margin-bottom: 1%;
 }
+#choiceA:active,
+#choiceB:active,
+#choiceC:active,
+#choiceD:active {
+  color: white;
+  border-color: white;
+}
 #choiceB {
   color: blue;
   border-color: blue;
