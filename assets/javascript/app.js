@@ -166,11 +166,16 @@ function checkWin(xx) {
 
 function endgame() {
   stop();
-  qText.text(`Game Over! You got ${score} questions correct!`);
+  qText.text(
+    `Game Over! You got ${score} questions correct! Click below to start over.`
+  );
   pickA.text(`# Correct`);
   pickB.text(`# Incorrect`);
   pickC.text(score);
   pickD.text(5 - score);
+  $(`#choices`).click(function() {
+    location.reload();
+  });
 }
 
 startGame();
